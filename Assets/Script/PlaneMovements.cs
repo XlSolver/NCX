@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class PlaneMovements : MonoBehaviour
 {
@@ -6,6 +6,7 @@ public class PlaneMovements : MonoBehaviour
 
     public float spawnrate = 3;
     public float timer = 0;
+    public float groundLenght = 35f;
 
     public GameObject Ground;
 
@@ -30,8 +31,11 @@ public class PlaneMovements : MonoBehaviour
             timer += Time.deltaTime;
         } else
         {
-            Instantiate(Ground, transform.position, transform.rotation);
+            Instantiate(Ground, new Vector2(transform.position.x + groundLenght, transform.position.y), transform.rotation);
             timer = 0;
         }
+
+    
     }
 }
+*/
