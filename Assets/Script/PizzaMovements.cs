@@ -7,7 +7,7 @@ public class Movements : MonoBehaviour
 {
     public Animator anim; //Animazione
     public bool isPizzaAlive = true;
-    public float jumpForce = 12f;
+    public float jumpVelocity;
     public BoxCollider2D boxCollider2d;
     public Rigidbody2D rigidbody2d;
 
@@ -30,22 +30,12 @@ public class Movements : MonoBehaviour
         //Salto
         if (isGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
-            float jumpVelocity = 800f;
             rigidbody2d.velocity = Vector2.up * jumpVelocity;
         }
     }
 
-    /*private void jump()
-    {
-        
-        GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        jumpForce = 12f; // Resetta la forza di salto dopo il salto
-    }*/
-
     private bool isGrounded()
     {
-        //return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded;
-
         float extraHeightText = 0.1f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, extraHeightText, Ground);
 
