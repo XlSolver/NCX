@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChairMovements : MonoBehaviour
 {
     public float scrollSpeed;
+    public GameObject chair;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +17,15 @@ public class ChairMovements : MonoBehaviour
     void Update()
     {
         transform.position += (Vector3.left * scrollSpeed) * Time.deltaTime;
+        
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && chair != null)
+        {
+            Destroy(chair);
+        }
     }
 }
