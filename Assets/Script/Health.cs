@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,42 +8,59 @@ public class Health : MonoBehaviour
 
     public Image[] slicesOfPizza;
     public Sprite health4;
-    public Sprite healt3;
-    public Sprite healt2;
-    public Sprite healt1;
+    public Sprite health3;
+    public Sprite health2;
+    public Sprite health1;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = MAXHEALTH;
+        UpdateHealthUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void takeDamage(int amount)
+    void TakeDamage(int amount)
     {
-        //Play sound
+        // Play sound
 
         currentHealth -= amount;
 
         if (currentHealth <= 0)
         {
-            //dead
-            //death animation
-            //gameover
+            // Dead
+            // Death animation
+            // Game over
         }
+
+        UpdateHealthUI();
     }
 
-    void showHealth()
+    void UpdateHealthUI()
     {
-        switch (currentHealth)
+        // Assicurati che l'array delle immagini sia valido e che l'indice sia nel range corretto
+        if (slicesOfPizza != null && currentHealth >= 0 && currentHealth < slicesOfPizza.Length)
         {
-            //case 4: 
+            // Disattiva tutte le immagini
+            foreach (Image slice in slicesOfPizza)
+            {
+                slice.gameObject.SetActive(false);
+            }
+
+            // Attiva solo le immagini necessarie per rappresentare la salute corrente
+            for (int i = 0; i < currentHealth; i++)
+            {
+                slicesOfPizza[i].gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Array delle immagini UI non assegnato nell'Editor Unity o indice non valido.");
         }
     }
-
 }
