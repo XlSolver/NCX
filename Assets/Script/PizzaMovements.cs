@@ -27,10 +27,14 @@ public class Movements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Touch touch = Input.GetTouch(0);
         //Salto
-        if (isGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded() && (Input.touchCount > 0 || Input.GetKeyDown(KeyCode.Space)))
         {
-            rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            if (touch.phase == TouchPhase.Began)
+            {
+                rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            }
         }
     }
 
