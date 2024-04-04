@@ -38,14 +38,14 @@ public class SpawnChair : MonoBehaviour
             GameObject newChair = Instantiate(chair, new Vector3(offsetX, offsetY, offsetZ), Quaternion.Euler(0, 0, -90));
             //obstacles.Add(newChair);
             timer = 0;
-            Debug.Log("Il timer è a 0 -> " + timer);
+            
         }
     }
 
     private void updateTimer()
     {
         timer += Time.deltaTime;
-        Debug.Log("timer: " + timer);
+       
     }
 
     

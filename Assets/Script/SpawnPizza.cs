@@ -34,12 +34,12 @@ public class SpawnPizza : MonoBehaviour
         for (int i = 0; i < limitNumberForPizzaCanvas; i++)
         {
             
-                GameObject pizza = Instantiate(PizzaDesign, new Vector3(transform.position.x + (i * transform.position.x * xOffset), transform.position.y, transform.position.z), Quaternion.identity); //new istance
+            GameObject pizza = Instantiate(PizzaDesign, new Vector3(transform.position.x + (i * transform.position.x * xOffset), transform.position.y, transform.position.z), Quaternion.identity); //new istance
             pizzas.Add(pizza); //Add the istance into the list
 
             Debug.Log("Pizzas count: " + pizzas.Count);
-                Debug.Log("Limit number: " + limitNumberForPizzaCanvas);
-                Debug.Log("Nel box nel box");
+            Debug.Log("Limit number: " + limitNumberForPizzaCanvas);
+                
         }
     }
 

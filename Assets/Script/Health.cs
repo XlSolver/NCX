@@ -8,11 +8,17 @@ public class Health : MonoBehaviour
     public int MAXHEALTH = 4;
     public int currentHealth;
 
-    
+
+    private static ShowHearts link;
+
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = MAXHEALTH;
+        link = GetComponent<ShowHearts>();
+        
+        
     }
 
     // Update is called once per frame
@@ -24,9 +30,12 @@ public class Health : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Play sound
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Chair"))
         {
             currentHealth -= 1;
+
+            Debug.Log("Oh no hai perso una vita!");
+            link.showHealth();
         }
         
 
@@ -36,6 +45,6 @@ public class Health : MonoBehaviour
             //death animation
             //gameover
         }
-        Invoke("showHealth", 1.0f);
+        //link.showHealth();
     }
 }
